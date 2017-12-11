@@ -30,7 +30,10 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
+import org.kohsuke.stapler.export.Exported;
+import org.kohsuke.stapler.export.ExportedBean;
 
+@ExportedBean(defaultVisibility = 999)
 public class RobotSuiteResult extends RobotTestObject {
 
 	private static final long serialVersionUID = 1L;
@@ -73,6 +76,7 @@ public class RobotSuiteResult extends RobotTestObject {
 	 * Get the immediate child suites of this suite
 	 * @return
 	 */
+	@Exported
 	public Collection<RobotSuiteResult> getChildSuites() {
 		if (children != null)
 			return children.values();
@@ -93,6 +97,7 @@ public class RobotSuiteResult extends RobotTestObject {
 	/**
 	 * Get the name of this suite
 	 */
+	@Exported
 	public String getName(){
 		return name;
 	}
@@ -118,6 +123,7 @@ public class RobotSuiteResult extends RobotTestObject {
 	 * Get number of all failed tests
 	 * @return
 	 */
+	@Exported
 	public int getFailed() {
 		return failed;
 	}
@@ -126,6 +132,7 @@ public class RobotSuiteResult extends RobotTestObject {
 	 * Get number of all passed tests
 	 * @return
 	 */
+	@Exported
 	public int getPassed() {
 		return passed;
 	}
@@ -134,6 +141,7 @@ public class RobotSuiteResult extends RobotTestObject {
 	 * Get number of all tests
 	 * @return
 	 */
+	@Exported
 	public int getTotal() {
 		return passed + failed;
 	}
@@ -142,6 +150,7 @@ public class RobotSuiteResult extends RobotTestObject {
 	 * Get number of passed critical tests
 	 * @return
 	 */
+	@Exported
 	public long getCriticalPassed() {
 		return criticalPassed;
 	}
@@ -150,6 +159,7 @@ public class RobotSuiteResult extends RobotTestObject {
 	 * Get number of failed critical tests
 	 * @return
 	 */
+	@Exported
 	public long getCriticalFailed() {
 		return criticalFailed;
 	}
@@ -158,6 +168,7 @@ public class RobotSuiteResult extends RobotTestObject {
 	 * Get number of all critical tests
 	 * @return
 	 */
+	@Exported
 	public int getCriticalTotal() {
 		return criticalPassed + criticalFailed;
 	}
@@ -183,6 +194,7 @@ public class RobotSuiteResult extends RobotTestObject {
 	}
 
 	@Override
+	@Exported
 	public long getDuration() {
 		if (StringUtils.isEmpty(this.startTime) || StringUtils.isEmpty(this.endTime))
 				return duration;

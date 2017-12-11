@@ -31,7 +31,10 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
+import org.kohsuke.stapler.export.Exported;
+import org.kohsuke.stapler.export.ExportedBean;
 
+@ExportedBean(defaultVisibility = 999)
 public class RobotCaseResult extends RobotTestObject{
 
 	private static final long serialVersionUID = -8075680639442547520L;
@@ -71,6 +74,7 @@ public class RobotCaseResult extends RobotTestObject{
 	 * {@inheritDoc}
 	 */
 	@Override
+	@Exported
 	public String getName() {
 		return name;
 	}
@@ -92,6 +96,7 @@ public class RobotCaseResult extends RobotTestObject{
 	}
 
 	@Override
+	@Exported
 	public long getDuration() {
 		if (duration != 0)
 			return duration;
@@ -120,6 +125,7 @@ public class RobotCaseResult extends RobotTestObject{
 		this.endtime = endtime;
 	}
 
+	@Exported
 	public String getErrorMsg() {
 		return errorMsg;
 	}
@@ -136,6 +142,7 @@ public class RobotCaseResult extends RobotTestObject{
 		this.critical = critical;
 	}
 
+	@Exported
 	public String getDisplayName() {
 		return getName();
 	}
@@ -148,10 +155,12 @@ public class RobotCaseResult extends RobotTestObject{
 		return passed;
 	}
 
+	@Exported
 	public boolean isCritical() {
 		return critical;
 	}
 
+	@Exported
 	public List<String> getTags(){
 		if(tags == null)
 			return new ArrayList<String>();
@@ -245,6 +254,7 @@ public class RobotCaseResult extends RobotTestObject{
 	}
 
 	@Override
+	@Exported
 	public int getFailed() {
 		if(isPassed()) return 0;
 		return 1;
